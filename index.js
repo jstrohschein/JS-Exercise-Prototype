@@ -193,13 +193,28 @@ function Car(model, milesPerGallon) {
 
 
 
+//step 1, bind 'this' to Person with '.call'
+function Baby(name, age, favoriteToy) {
 
-function Baby() {
+  Person.call(this, name, age);
 
+  this.favoriteToy = favoriteToy;
+};
+
+//step 2 copy the parent (Person) prototype to the child (Baby) prototype
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function() {
+  return `Playing with ${this.favoriteToy}`;
 }
 
+const appa = new Baby('Appa', 1, 'ball');
 
+//constructor test
+//console.log(appa);
 
+//play test
+//console.log(appa.play());
 
 
 
@@ -216,7 +231,7 @@ function Baby() {
 
   3. Can be new-bound. When 'this' is used in a constructor function, it references each unique instance of the object created from the constructor.
 
-  4. Can be explcitly bound. Uses 2 methods: 'call' and 'apply'. These 2 methods can be called on other methods (i.e., object.method.call(...)). Used to run a method on all the properties of a specific object.
+  4. Can be explcitly bound. Uses 2 methods: 'call' and 'apply'. These 2 methods can be called on other methods or the object at large (i.e., object.method.call(...) or object.call). Used to run a method on all the properties of a specific object.
 */
 
 
