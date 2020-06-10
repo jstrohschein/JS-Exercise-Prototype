@@ -26,6 +26,12 @@ Airplane.prototype.land = function () {
 // 👇 COMPLETE YOUR WORK BELOW 👇
 */
 
+
+
+
+
+
+
 /*
   TASK 1
     - Write a Person Constructor that initializes `name` and `age` from arguments.
@@ -39,9 +45,68 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
 
-}
+
+
+
+
+function Person(name, age) {
+
+  this.name = name;
+
+  this.age = age;
+
+  this.stomach = [];
+
+  this.eat = function (someFood) {
+    if (this.stomach.length < 10) {
+      return this.stomach.push(someFood);
+    }
+
+    else {
+     return console.log ('Stomach is full');
+    }
+  };
+
+};
+
+Person.prototype.poop = function () {
+  this.stomach = [];
+};
+
+Person.prototype.toString = function () {
+  return `${this.name}, ${this.age}`;
+};
+
+
+const me = new Person('Jared', 30);
+
+
+//eat test
+// console.log(me);
+// me.eat ('sushi');
+// console.log(me.stomach);
+
+
+//poop test
+// for (let i = 0; i < 11; i++) {
+//   me.eat ('sushi');
+// };
+// console.log(me.stomach);
+// me.poop();
+// console.log(me.stomach);
+
+
+//toString test
+//console.log(me.toString());
+
+
+
+
+
+
+
+
 
 /*
   TASK 2
@@ -57,9 +122,20 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
+
+
+
+
+
 function Car() {
 
 }
+
+
+
+
+
+
 
 /*
   TASK 3
@@ -68,18 +144,34 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
+
+
+
+
+
 function Baby() {
 
 }
+
+
+
+
+
+
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
+
   1. 
-  2. 
-  3. 
-  4. 
+
+  2.
+
+  3.
+
+  4.
+
 */
 
 
