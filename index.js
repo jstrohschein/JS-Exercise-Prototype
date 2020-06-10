@@ -127,9 +127,54 @@ const me = new Person('Jared', 30);
 
 
 
-function Car() {
+function Car(model, milesPerGallon) {
 
-}
+  this.model = model;
+
+  this.milesPerGallon = milesPerGallon;
+
+  this.tank = 0;
+
+  this.odometer = 0;
+
+  this.fill = function (gallons) {
+    this.tank += gallons;
+  };
+
+  this.drive = function (distance) {
+
+    let fuel = this.tank - distance / this.milesPerGallon;
+
+    if (fuel > 0){
+    this.odometer += distance;
+    this.tank = fuel;
+    }
+
+    else {
+      this.odometer += this.milesPerGallon * this.tank;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+    
+  };
+
+};
+
+// car constructor test 
+// const whip = new Car('Mustang', 10);
+// console.log(whip);
+
+// fill test
+// whip.fill(25);
+// console.log(whip);
+
+// drive test w/o running out of fuel
+// whip.drive(10);
+// console.log(whip);
+
+// drive test running out of fuel
+// console.log(whip.drive(400));
+
 
 
 
@@ -139,7 +184,7 @@ function Car() {
 
 /*
   TASK 3
-    - Write a Baby constructor subclassing Person.
+    - Write a 'Baby' constructor, subclassing Person.
     - Besides `name` and `age`, Baby takes a third argument to initialize `favoriteToy`.
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
@@ -164,14 +209,14 @@ function Baby() {
 
   In your own words explain the four principles for the "this" keyword below:
 
-  1. 
+  1. Can be bound to the window (i.e., the global object) and then when referenced will reference the global object.
 
-  2.
+  2. Can be implicitly bound. That is, when it is used within an object
+  to define a method, it is a reference to the object it's in. 
 
-  3.
+  3. Can be new-bound. When 'this' is used in a constructor function, it references each unique instance of the object created from the constructor.
 
-  4.
-
+  4. Can be explcitly bound. Uses 2 methods: 'call' and 'apply'. These 2 methods can be called on other methods (i.e., object.method.call(...)). Used to run a method on all the properties of a specific object.
 */
 
 
