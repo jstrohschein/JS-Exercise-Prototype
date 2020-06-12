@@ -58,16 +58,18 @@ function Person(name, age) {
 
   this.stomach = [];
 
-  this.eat = function (someFood) {
-    if (this.stomach.length < 10) {
-      return this.stomach.push(someFood);
-    }
 
-    else {
-     return console.log ('Stomach is full');
-    }
-  };
+};
 
+
+Person.prototype.eat = function (someFood) {
+  if (this.stomach.length < 10) {
+    return this.stomach.push(someFood);
+  }
+
+  else {
+   return console.log ('Stomach is full');
+  }
 };
 
 Person.prototype.poop = function () {
@@ -90,7 +92,7 @@ const me = new Person('Jared', 30);
 
 //poop test
 // for (let i = 0; i < 11; i++) {
-//   me.eat ('sushi');
+// me.eat ('sushi');
 // };
 // console.log(me.stomach);
 // me.poop();
@@ -137,27 +139,31 @@ function Car(model, milesPerGallon) {
 
   this.odometer = 0;
 
-  this.fill = function (gallons) {
-    this.tank += gallons;
-  };
+  
 
-  this.drive = function (distance) {
+};
 
-    let fuel = this.tank - distance / this.milesPerGallon;
 
-    if (fuel > 0){
-    this.odometer += distance;
-    this.tank = fuel;
-    }
 
-    else {
-      this.odometer += this.milesPerGallon * this.tank;
-      this.tank = 0;
-      return `I ran out of fuel at ${this.odometer} miles!`;
-    }
-    
-  };
+Car.prototype.fill = function (gallons) {
+  this.tank += gallons;
+};
 
+Car.prototype.drive = function (distance) {
+
+  let fuel = this.tank - distance / this.milesPerGallon;
+
+  if (fuel > 0){
+  this.odometer += distance;
+  this.tank = fuel;
+  }
+
+  else {
+    this.odometer += this.milesPerGallon * this.tank;
+    this.tank = 0;
+    return `I ran out of fuel at ${this.odometer} miles!`;
+  }
+  
 };
 
 // car constructor test 
